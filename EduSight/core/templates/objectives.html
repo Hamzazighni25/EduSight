@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="objectives-page-container" style="padding-top: 100px; min-height: 100vh; background: linear-gradient(135deg, #f5f5dc 0%, #fff8dc 100%);">
+    <div class="container py-5">
+        <!-- Main Title -->
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold mb-3" style="color: #1e3a5f;">
+                <i class="fas fa-bullseye me-3"></i>{{ objectives.main_title }}
+            </h1>
+            <div class="divider mx-auto mb-4" style="width: 100px; height: 4px; background: #1e3a5f; border-radius: 2px;"></div>
+        </div>
+
+        {% for section in objectives.sections %}
+        <div class="section-container mb-5">
+            <!-- Section Header -->
+            <div class="section-header mb-4">
+                <div class="d-flex align-items-center">
+                    <div class="section-icon me-3" style="width: 60px; height: 60px; background: #1e3a5f; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        {% if forloop.counter == 1 %}
+                            <i class="fas fa-map-marked-alt fa-2x text-white"></i>
+                        {% else %}
+                            <i class="fas fa-star fa-2x text-white"></i>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <h2 class="h3 mb-0 fw-bold" style="color: #1e3a5f;">
+                            {{ section.title }}
+                        </h2>
+                        <p class="text-muted mb-0 small">Section {{ forloop.counter }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objectives Grid -->
+            <div class="row g-4">
+                {% for objective in section.objectives %}
+                <div class="col-md-6 col-lg-4">
+                    <a href="{% url 'predict_model' objective.model_key %}" class="text-decoration-none">
+                        <div class="objective-card card h-100 border-0 shadow-sm" style="background: white; transition: all 0.3s ease; cursor: pointer; border-left: 4px solid #1e3a5f !important;">
+                            <div class="card-body p-4">
+                                <!-- Objective Number Badge -->
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div class="objective-badge" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); color: white; width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                        {{ objective.number }}
+                                    </div>
+                                    <div class="model-badge px-3 py-1 rounded-pill" style="background: #e8f4f8; color: #1e3a5f; font-size: 0.75rem; font-weight: 600;">
+                                        <i class="fas fa-robot me-1"></i>ML Model
+                                    </div>
+                                </div>
+
+                                <!-- Objective Title -->
+                                <h4 class="h5 fw-bold mb-3" style="color: #1e3a5f; min-height: 60px;">
+                                    <i class="fas {{ objective.icon }} me-2" style="color: #2c5282;"></i>{{ objective.title }}
+                                </h4>
+                                
+                                <!-- Description -->
+                                <p class="text-muted mb-4" style="font-size: 0.9rem; line-height: 1.6; min-height: 80px;">
+                                    {{ objective.description }}
+                                </p>
+                                
+                                <!-- Model Info -->
+                                <div class="model-info p-3 rounded mb-3" style="background: #f8f9fa; border-left: 3px solid #2c5282;">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="fas fa-cogs me-2" style="color: #2c5282;"></i>
+                                        <strong style="color: #1e3a5f; font-size: 0.85rem;">MODEL TYPE</strong>
+                                    </div>
+                                    <p class="mb-0" style="color: #495057; font-size: 0.9rem; font-weight: 500;">
+                                        {{ objective.model }}
+                                    </p>
+                                </div>
+                                
+                                <!-- Action Button -->
+                                <div class="action-btn mt-auto">
+                                    <div class="btn btn-primary w-100" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); border: none; padding: 12px; font-weight: 600; border-radius: 8px;">
+                                        <i class="fas fa-arrow-right me-2"></i>Use This Model
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Summary Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="summary-card card border-0 shadow-lg" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); border-radius: 15px; overflow: hidden;">
+                    <div class="card-body p-5 text-center text-white">
+                        <div class="mb-4">
+                            <i class="fas fa-lightbulb fa-3x mb-3" style="opacity: 0.9;"></i>
+                        </div>
+                        <h3 class="h4 mb-3 fw-bold">About Our ML Models</h3>
+                        <p class="mb-0" style="font-size: 1.05rem; line-height: 1.8; opacity: 0.95; max-width: 800px; margin: 0 auto;">
+                            Our machine learning models are designed to support data-driven decision making in the French education system. 
+                            Each model addresses a specific challenge in optimizing school distribution and improving educational quality.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.objective-card {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.objective-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(30, 58, 95, 0.15) !important;
+    border-left-color: #2c5282 !important;
+}
+
+.objective-card:hover .action-btn .btn {
+    background: linear-gradient(135deg, #2c5282 0%, #3d6fa3 100%) !important;
+    transform: scale(1.02);
+}
+
+.section-header {
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.section-icon {
+    box-shadow: 0 4px 12px rgba(30, 58, 95, 0.2);
+}
+
+.objective-badge {
+    box-shadow: 0 4px 8px rgba(30, 58, 95, 0.2);
+}
+
+.model-badge {
+    border: 1px solid #cbd5e0;
+}
+
+.action-btn .btn {
+    transition: all 0.3s ease;
+}
+
+.action-btn .btn:hover {
+    box-shadow: 0 6px 12px rgba(30, 58, 95, 0.3);
+}
+
+.summary-card {
+    transition: transform 0.3s ease;
+}
+
+.summary-card:hover {
+    transform: scale(1.02);
+}
+</style>
+{% endblock %}

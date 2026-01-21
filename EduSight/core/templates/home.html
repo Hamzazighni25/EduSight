@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section with Large Logo -->
+<div class="hero-section">
+    <div class="container">
+        <div class="hero-logo-container">
+            <img src="{% static 'img/EduSights (1).png' %}" alt="EduSight Logo" class="hero-logo">
+        </div>
+        <h1 class="hero-title">Transforming Education Through Data Intelligence</h1>
+        <p class="hero-subtitle">Professional BI/ML Solution for French Education Analytics</p>
+        <div class="hero-metaflow">
+            <span class="powered-by">Powered by</span>
+            <img src="{% static 'img/MetaFlow (1).png' %}" alt="Meta Flow Logo" class="metaflow-logo-hero">
+        </div>
+        <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="{% url 'dashboard' %}" role="button">
+                <i class="fas fa-chart-line me-2"></i>View Dashboard
+            </a>
+            <a class="btn btn-outline-primary btn-lg" href="{% url 'predict_default' %}" role="button">
+                <i class="fas fa-brain me-2"></i>Run Predictions
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="features-section">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <h2 class="section-title">Our Capabilities</h2>
+            <p class="section-subtitle">Comprehensive solutions for educational data analysis</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h4 class="feature-title">Data Analytics</h4>
+                    <p class="feature-description">Comprehensive Power BI dashboards providing deep insights into French educational data with interactive visualizations.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h4 class="feature-title">Machine Learning</h4>
+                    <p class="feature-description">Advanced ML models powered by scikit-learn to predict educational outcomes and classify institutions.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h4 class="feature-title">Big Data</h4>
+                    <p class="feature-description">Leveraging massive datasets of French educational records to uncover trends and patterns.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- About Section with Integrated Logos -->
+<div class="about-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="about-content">
+                    <div class="edusight-logo-large mb-4">
+                        <img src="{% static 'img/EduSights (1).png' %}" alt="EduSight Logo" class="logo-large">
+                    </div>
+                    <h2 class="section-title mb-4">About EduSight</h2>
+                    <p class="lead mb-4">A comprehensive platform that combines the power of business intelligence and machine learning to provide actionable insights into the French education system.</p>
+                    <p class="mb-4">Our platform leverages a massive dataset of French educational records to uncover trends, predict future outcomes, and help stakeholders make data-driven decisions for improvements in the educational sector.</p>
+                    <div class="key-features">
+                        <h5 class="mb-3">Key Features:</h5>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Interactive Power BI Dashboards</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Machine Learning Predictions</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Real-time Data Analysis</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>User-friendly Interface</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="team-section">
+                    <div class="team-header mb-4">
+                        <div class="metaflow-logo-section">
+                            <img src="{% static 'img/MetaFlow (1).png' %}" alt="Meta Flow Logo" class="metaflow-logo-large">
+                        </div>
+                        <h2 class="section-title mt-3">Meta Flow Team</h2>
+                        <p class="lead">A talented team of data scientists and developers dedicated to transforming education through technology.</p>
+                    </div>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-card">
+                                <img src="{% static 'img/Jihed.png' %}" alt="Jihed Bakalti" class="member-photo">
+                                <h6 class="member-name">Jihed Bakalti</h6>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-card">
+                                <img src="{% static 'img/Manai.png' %}" alt="Malek Manai" class="member-photo">
+                                <h6 class="member-name">Malek Manai</h6>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-card">
+                                <img src="{% static 'img/zeineb.jpg' %}" alt="Zeineb Moujehed" class="member-photo">
+                                <h6 class="member-name">Zeineb Moujehed</h6>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-card">
+                                <img src="{% static 'img/amimi.png' %}" alt="Malek Amimi" class="member-photo">
+                                <h6 class="member-name">Malek Amimi</h6>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-card">
+                                <img src="{% static 'img/Meryem.png' %}" alt="Meryem Benani" class="member-photo">
+                                <h6 class="member-name">Meryem Benani</h6>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-card">
+                                <img src="{% static 'img/Hamza2.png' %}" alt="Hamza Zighni" class="member-photo">
+                                <h6 class="member-name">Hamza Zighni</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
